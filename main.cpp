@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -6,12 +7,14 @@ bool playGame(int guesses)
 {
     cout << "Playing Guessing game \n";
     cout << "Rules: Guess a number between 1 - 50 \n";
-    int correct = 42;
-    int guess;
+    srand(time(NULL));
+    int correct = rand() % 20;
+    cout << correct << endl;
     int guessCount = 0;
 
     while(guessCount < guesses)
     {
+        int guess;
         cout << "You get " << (guesses - guessCount) << " guesses...\n";
         cin >> guess;
         guessCount++;
@@ -24,7 +27,7 @@ bool playGame(int guesses)
         {
             cout << "Guess is too low \n";
         } 
-        else if(guess > correct) 
+        else
         {
             cout << "Guess is too high \n";
         };

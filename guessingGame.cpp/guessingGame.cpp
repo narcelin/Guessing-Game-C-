@@ -8,17 +8,14 @@ using namespace std;
 bool guessingGame(int guesses)
 {
     cout << "Playing Guessing game \n";
-    cout << "Rules: Guess a number between 1 - 50 \n";
     srand(time(NULL));
     int correct = rand() % 20;
-    int guessCount = 0;
+    cout << correct << endl;
 
-    while(guessCount < guesses)
-    {
+    for(int guessCount = 1; guessCount <= guesses; guessCount++){
         int guess;
         cout << "You get " << (guesses - guessCount) << " guesses...\n";
         cin >> guess;
-        guessCount++;
 
         if(guess == correct)
         {

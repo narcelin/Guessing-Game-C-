@@ -2,40 +2,88 @@
 
 using namespace std;
 
-bool testFunction(int guesses){
-    cout << "Playing Game ...\n";
+bool playGame(int guesses)
+{
+    cout << "Playing Guessing game \n";
+    cout << "Rules: Guess a number between 1 - 50 \n";
     int correct = 42;
-    cout << "Guess a number...\n";
-    cout << "You get " << guesses << "guesses...\n";
-    return true;
+    int guess;
+    int guessCount = 0;
+
+    while(guessCount < guesses)
+    {
+        cout << "You get " << (guesses - guessCount) << " guesses...\n";
+        cin >> guess;
+        guessCount++;
+
+        if(guess == correct)
+        {
+            return true;
+        } 
+        else if(guess < correct)
+        {
+            cout << "Guess is too low \n";
+        } 
+        else if(guess > correct) 
+        {
+            cout << "Guess is too high \n";
+        };
+
+    }
+    return false;
 }
 
-int main() {
-    testFunction();
+int main() 
+{
     cout << "Do you want to play a game? (Y/n): ";
     string response;
     cin >> response;
-    cout << "You entered: " << response << endl;
+    // cout << "You entered: " << response << endl;
 
-    if(response[0] == 'y'){
+    if(response[0] == 'y')
+    {
         cout << "Let's play a game, then... \n";
-        cout << "What difficulty? (easy/medium/hard): ";
-        string difficulty;
+        cout << "1: Easy \n";
+        cout << "2: Medium \n";
+        cout << "3: Hard \n";
+        cout << "Select a difficulty: ";
+        int difficulty;
         cin >> difficulty; 
-        cout << "You chose difficulty: " << difficulty << endl;
-        if(difficulty == "easy"){
-            cout << "ezpz lemon squeezy\n";
-        } else if (difficulty == "medium"){
-            cout << "Average\n";
-        } else if (difficulty == "hard"){
-            cout << "Whoah, we got a bit of a badass here uh?\n";
-        } else {
-            cout <<"Sorry I did not uderstand, goodbye";
-        }
+        // cout << "You chose difficulty: " << difficulty << endl;
+        int gameResult;
 
-    } else if(response[0] == 'n'){
+        switch(difficulty)
+        {
+            case 1:
+            gameResult = playGame(10);
+            break;
+            case 2:
+            gameResult = playGame(5);
+            break;
+            case 3:
+            gameResult = playGame(3);
+            break;
+            case 4:
+            gameResult = playGame(1);
+            break;
+        };
+
+        if(gameResult)
+        {
+            cout << "Congradulations, you won!";
+        } 
+        else 
+        {
+            cout << "Sorry, try again next time!";
+        };
+
+    }
+    else if(response[0] == 'n')
+    {
         cout << "We will not play a game then, goodbye.";
-    } else {
+    } 
+    else 
+    {
         cout << "Please input a valid value next time, goodbye.";
     };
 

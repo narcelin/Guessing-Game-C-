@@ -9,7 +9,6 @@ bool playGame(int guesses)
     cout << "Rules: Guess a number between 1 - 50 \n";
     srand(time(NULL));
     int correct = rand() % 20;
-    cout << correct << endl;
     int guessCount = 0;
 
     while(guessCount < guesses)

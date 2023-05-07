@@ -1,39 +1,8 @@
 #include <iostream>
 #include <cstdlib>
+#include "./guessingGame.cpp/guessingGame.cpp"
 
 using namespace std;
-
-bool playGame(int guesses)
-{
-    cout << "Playing Guessing game \n";
-    cout << "Rules: Guess a number between 1 - 50 \n";
-    srand(time(NULL));
-    int correct = rand() % 20;
-    int guessCount = 0;
-
-    while(guessCount < guesses)
-    {
-        int guess;
-        cout << "You get " << (guesses - guessCount) << " guesses...\n";
-        cin >> guess;
-        guessCount++;
-
-        if(guess == correct)
-        {
-            return true;
-        } 
-        else if(guess < correct)
-        {
-            cout << "Guess is too low \n";
-        } 
-        else
-        {
-            cout << "Guess is too high \n";
-        };
-
-    }
-    return false;
-}
 
 int main() 
 {
@@ -57,16 +26,16 @@ int main()
         switch(difficulty)
         {
             case 1:
-            gameResult = playGame(10);
+            gameResult = guessingGame(10);
             break;
             case 2:
-            gameResult = playGame(5);
+            gameResult = guessingGame(5);
             break;
             case 3:
-            gameResult = playGame(3);
+            gameResult = guessingGame(3);
             break;
             case 4:
-            gameResult = playGame(1);
+            gameResult = guessingGame(1);
             break;
         };
 
